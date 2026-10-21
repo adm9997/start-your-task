@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HistoriaRouteImport } from './routes/historia'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as ReembolsosRouteImport } from './routes/reembolsos'
 import { Route as TermosRouteImport } from './routes/termos'
@@ -17,6 +18,11 @@ import { Route as TermosRouteImport } from './routes/termos'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoriaRoute = HistoriaRouteImport.update({
+  id: '/historia',
+  path: '/historia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
@@ -37,12 +43,14 @@ const TermosRoute = TermosRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/historia': typeof HistoriaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reembolsos': typeof ReembolsosRoute
   '/termos': typeof TermosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/historia': typeof HistoriaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reembolsos': typeof ReembolsosRoute
   '/termos': typeof TermosRoute
@@ -50,20 +58,23 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/historia': typeof HistoriaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reembolsos': typeof ReembolsosRoute
   '/termos': typeof TermosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacidade' | '/reembolsos' | '/termos'
+  fullPaths: '/' | '/historia' | '/privacidade' | '/reembolsos' | '/termos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacidade' | '/reembolsos' | '/termos'
-  id: '__root__' | '/' | '/privacidade' | '/reembolsos' | '/termos'
+  to: '/' | '/historia' | '/privacidade' | '/reembolsos' | '/termos'
+  id:
+    '__root__' | '/' | '/historia' | '/privacidade' | '/reembolsos' | '/termos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HistoriaRoute: typeof HistoriaRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   ReembolsosRoute: typeof ReembolsosRoute
   TermosRoute: typeof TermosRoute
@@ -76,6 +87,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historia': {
+      id: '/historia'
+      path: '/historia'
+      fullPath: '/historia'
+      preLoaderRoute: typeof HistoriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacidade': {
@@ -104,6 +122,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HistoriaRoute: HistoriaRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   ReembolsosRoute: ReembolsosRoute,
   TermosRoute: TermosRoute,
