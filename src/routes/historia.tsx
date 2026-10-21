@@ -8,7 +8,7 @@ type Search = { session?: string };
 
 export const Route = createFileRoute("/historia")({
   validateSearch: (s: Record<string, unknown>): Search => ({
-    session: typeof s.session === "string" ? s.session : undefined,
+    session: typeof s["session"] === "string" ? s["session"] : undefined,
   }),
   head: () => ({
     meta: [
