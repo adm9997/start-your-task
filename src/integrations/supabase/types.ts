@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      pedidos: {
+        Row: {
+          criado_em: string
+          email: string
+          estilo: string
+          evitar: string | null
+          frase: string | null
+          historia: string
+          id: string
+          memorias: string
+          ocasiao: string
+          para_quem: string
+          relacao: string
+          status: string
+          stripe_session: string | null
+          voz: string
+        }
+        Insert: {
+          criado_em?: string
+          email: string
+          estilo: string
+          evitar?: string | null
+          frase?: string | null
+          historia: string
+          id?: string
+          memorias: string
+          ocasiao: string
+          para_quem: string
+          relacao: string
+          status?: string
+          stripe_session?: string | null
+          voz: string
+        }
+        Update: {
+          criado_em?: string
+          email?: string
+          estilo?: string
+          evitar?: string | null
+          frase?: string | null
+          historia?: string
+          id?: string
+          memorias?: string
+          ocasiao?: string
+          para_quem?: string
+          relacao?: string
+          status?: string
+          stripe_session?: string | null
+          voz?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
