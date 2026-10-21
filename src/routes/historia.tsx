@@ -4,7 +4,7 @@ import { Logo } from "@/components/SiteChrome";
 import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/lib/site";
 
-type Search = { session?: string };
+type Search = { session?: string | undefined };
 
 export const Route = createFileRoute("/historia")({
   validateSearch: (s: Record<string, unknown>): Search => ({
