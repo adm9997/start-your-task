@@ -29,7 +29,7 @@ export function LegalPage({ title, children }: { title: string; children: ReactN
       <main className="wrap narrow">
         <div className="card stack">
           <p className="msg err">
-            MODELO A REVER POR UM JURISTA ANTES DE PUBLICAR. Substitua os campos entre [colchetes].
+            MODELO A REVISAR POR UM ADVOGADO ANTES DE PUBLICAR. Substitua os campos entre [colchetes].
           </p>
           <h1 style={{ fontSize: "2rem" }}>{title}</h1>
           {children}
