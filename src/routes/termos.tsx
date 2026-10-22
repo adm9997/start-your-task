@@ -1,26 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/SiteChrome";
+import { SITE, precoBRL } from "@/lib/site";
 
 export const Route = createFileRoute("/termos")({
   head: () => ({
     meta: [
-      { title: "Termos e Condições — Canção Para Ti" },
-      { name: "description", content: "Termos e condições do serviço de canções personalizadas Canção Para Ti." },
-      { property: "og:title", content: "Termos e Condições — Canção Para Ti" },
-      { property: "og:description", content: "Termos e condições do serviço Canção Para Ti." },
+      { title: `Termos de Uso — ${SITE.marca}` },
+      {
+        name: "description",
+        content: `Termos de uso do serviço de músicas personalizadas ${SITE.marca}.`,
+      },
     ],
   }),
   component: () => (
-    <LegalPage title="Termos e Condições">
-      <p><b>Quem somos.</b> [Razão social], [NIF/CNPJ], [morada], email [contacto].</p>
-      <p><b>O serviço.</b> Criamos uma canção original e personalizada a partir das informações que o cliente nos envia. A letra e a música são produzidas com apoio de ferramentas de inteligência artificial e revistas pela nossa equipa.</p>
-      <p><b>Preço e pagamento.</b> Os preços incluem IVA. O pagamento é processado pelo Stripe. Os extras (entrega expresso, vídeo com letra, segunda canção) são opcionais.</p>
-      <p><b>Prazos.</b> Entrega em até 48 horas (ou 6 horas no expresso), contadas a partir do envio do formulário da história.</p>
-      <p><b>Revisões.</b> Estão incluídas até 3 revisões da letra, pedidas por email em até 14 dias após a entrega.</p>
-      <p><b>Direito de livre resolução.</b> Por se tratar de um conteúdo feito segundo as especificações do cliente, não se aplica o direito de livre resolução de 14 dias. Mantemos, ainda assim, a nossa garantia de satisfação (ver Política de Reembolso).</p>
-      <p><b>Uso da canção.</b> O cliente pode ouvir, oferecer e partilhar a canção para uso pessoal. [Definir se é permitido uso comercial.]</p>
-      <p><b>Conteúdo enviado.</b> O cliente garante que tem o direito de partilhar as informações e fotos enviadas e que não violam direitos de terceiros.</p>
-      <p><b>Lei aplicável.</b> [Definir.] Em caso de litígio, o consumidor pode recorrer a uma entidade de resolução alternativa de litígios.</p>
+    <LegalPage title="Termos de Uso">
+      <p>
+        <b>Quem somos.</b> {SITE.empresa}, {SITE.cnpj}, [endereço], e-mail {SITE.emailContato}.
+      </p>
+      <p>
+        <b>O serviço.</b> Criamos uma música original e personalizada a partir das informações
+        enviadas no quiz. A letra e a música são geradas com ferramentas de inteligência artificial.
+      </p>
+      <p>
+        <b>Prévia grátis.</b> Antes de qualquer pagamento, você ouve até {SITE.previaSegundos}{" "}
+        segundos da música e lê o início da letra. Podemos limitar a quantidade de prévias por
+        pessoa e por dia.
+      </p>
+      <p>
+        <b>Preço e pagamento.</b> A música completa custa {precoBRL()}, em pagamento único,
+        processado pelo Mercado Pago (Pix ou cartão). Não há assinatura.
+      </p>
+      <p>
+        <b>Entrega.</b> Após a confirmação do pagamento, a música completa, a letra e o download em
+        MP3 são liberados no link exclusivo do pedido.
+      </p>
+      <p>
+        <b>Direito de arrependimento.</b> [Definir com o jurídico como se aplica o art. 49 do CDC a
+        um conteúdo digital personalizado, entregue imediatamente após a compra e ouvido previamente
+        pelo cliente.]
+      </p>
+      <p>
+        <b>Uso da música.</b> Você pode ouvir, presentear e compartilhar a música para uso pessoal.
+        [Definir se é permitido uso comercial ou publicação em plataformas de streaming.]
+      </p>
+      <p>
+        <b>Conteúdo enviado.</b> Você garante que tem o direito de compartilhar as informações
+        enviadas e que elas não violam direitos de terceiros. Podemos recusar pedidos com conteúdo
+        ofensivo ou ilegal.
+      </p>
+      <p>
+        <b>Foro.</b> [Definir.]
+      </p>
     </LegalPage>
   ),
 });

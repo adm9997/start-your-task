@@ -1,24 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/SiteChrome";
+import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/privacidade")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidade — Canção Para Ti" },
-      { name: "description", content: "Como a Canção Para Ti recolhe e trata os teus dados pessoais." },
-      { property: "og:title", content: "Política de Privacidade — Canção Para Ti" },
-      { property: "og:description", content: "Como tratamos os teus dados pessoais." },
+      { title: `Política de Privacidade — ${SITE.marca}` },
+      {
+        name: "description",
+        content: `Como a ${SITE.marca} coleta e trata os seus dados pessoais (LGPD).`,
+      },
     ],
   }),
   component: () => (
     <LegalPage title="Política de Privacidade">
-      <p><b>Responsável.</b> [Razão social], [contacto].</p>
-      <p><b>Dados recolhidos.</b> Nome e email (checkout e formulário), as informações da história e, se enviadas, fotos. Os dados de pagamento são tratados pelo Stripe e não ficam connosco.</p>
-      <p><b>Finalidade.</b> Criar e entregar a canção, responder a pedidos de revisão e cumprir obrigações fiscais.</p>
-      <p><b>Base legal.</b> Execução do contrato (RGPD, art. 6.º, n.º 1, b) e obrigações legais.</p>
-      <p><b>Subcontratantes.</b> Stripe (pagamentos), Lovable Cloud (armazenamento), fornecedores de ferramentas de IA usados na produção, serviço de email. [Listar.]</p>
-      <p><b>Conservação.</b> As histórias e fotos são apagadas [90] dias após a entrega; os dados fiscais durante o prazo legal.</p>
-      <p><b>Direitos.</b> Acesso, retificação, apagamento, oposição e portabilidade, pelo email [contacto]. Pode reclamar junto da CNPD.</p>
+      <p>
+        <b>Controlador.</b> {SITE.empresa}, {SITE.cnpj}, e-mail {SITE.emailContato}.
+      </p>
+      <p>
+        <b>Dados coletados.</b> E-mail, WhatsApp (opcional), as informações da história enviadas no
+        quiz, endereço IP e navegador (para segurança e limite de uso) e parâmetros de campanha
+        (UTM). Dados de pagamento são tratados pelo Mercado Pago e não ficam conosco.
+      </p>
+      <p>
+        <b>Finalidades.</b> Criar e entregar a música, prevenir abuso, cumprir obrigações legais e
+        medir campanhas de anúncios.
+      </p>
+      <p>
+        <b>Bases legais (LGPD, art. 7º).</b> Execução de contrato, cumprimento de obrigação legal e
+        legítimo interesse (segurança e medição).
+      </p>
+      <p>
+        <b>Compartilhamento.</b> Mercado Pago (pagamentos), Supabase/Lovable Cloud (hospedagem e
+        banco de dados), Anthropic (geração da letra), ElevenLabs (geração da música), serviço de
+        e-mail e Meta (medição de anúncios, se ativada). [Revisar a lista.]
+      </p>
+      <p>
+        <b>Retenção.</b> As histórias são apagadas [180] dias após a criação; dados fiscais pelo
+        prazo legal.
+      </p>
+      <p>
+        <b>Seus direitos.</b> Confirmação, acesso, correção, anonimização, eliminação e
+        portabilidade, pelo e-mail {SITE.emailContato}. Você também pode reclamar à ANPD.
+      </p>
     </LegalPage>
   ),
 });

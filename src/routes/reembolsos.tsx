@@ -1,21 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/SiteChrome";
+import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/reembolsos")({
   head: () => ({
     meta: [
-      { title: "Política de Reembolso — Canção Para Ti" },
-      { name: "description", content: "Garantia de satisfação e política de reembolso da Canção Para Ti." },
-      { property: "og:title", content: "Política de Reembolso — Canção Para Ti" },
-      { property: "og:description", content: "Ou adoras, ou devolvemos o dinheiro." },
+      { title: `Política de Reembolso — ${SITE.marca}` },
+      { name: "description", content: `Política de reembolso da ${SITE.marca}.` },
     ],
   }),
   component: () => (
     <LegalPage title="Política de Reembolso">
-      <p><b>Garantia de satisfação.</b> Se, depois das revisões incluídas, a canção não te agradar, devolvemos o valor pago.</p>
-      <p><b>Como pedir.</b> Escreve para [contacto] em até [14] dias após a entrega, com o número da encomenda.</p>
-      <p><b>Prazo.</b> O reembolso é feito no mesmo meio de pagamento em até [10] dias úteis.</p>
-      <p><b>Atrasos.</b> Se a entrega passar do prazo comprado (48 h ou 6 h), devolvemos o valor do expresso ou, a teu pedido, o valor total.</p>
+      <p>
+        <b>Ouça antes de pagar.</b> Você ouve a prévia e lê o início da letra antes de comprar. O
+        pagamento libera exatamente a música que você ouviu.
+      </p>
+      <p>
+        <b>Problemas técnicos.</b> Se a música não for liberada após o pagamento aprovado, ou o
+        arquivo estiver com defeito, resolvemos ou devolvemos o valor integral.
+      </p>
+      <p>
+        <b>Como pedir.</b> Fale com a gente pelo e-mail {SITE.emailContato} ou WhatsApp em até [7]
+        dias após a compra, com o e-mail usado no pedido.
+      </p>
+      <p>
+        <b>Prazo.</b> O reembolso é feito pelo Mercado Pago, no mesmo meio de pagamento, em até [10]
+        dias úteis.
+      </p>
     </LegalPage>
   ),
 });
